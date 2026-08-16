@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Repository · Plum Heartleaf Brief · Santosh Iyer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,500;1,700&family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --plum:#713192; --plum-deep:#4c1f63; --ink:#1c1224; --cream:#F9FBFB; --paper:#ffffff;
+    --sage:#8BB93E; --sage-deep:#5d8420; --amber:#F2A123; --amber-deep:#b06f08;
+    --teal:#19A39E; --teal-deep:#0f7350; --muted:#6b6474; --line:#e5e0ea;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-size:16.5px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 22px;}
+  .mono{font-family:'DM Mono',monospace;}
+
+  .cover{
+    background:radial-gradient(ellipse at 85% 8%, rgba(113,49,146,.45), transparent 55%),
+      radial-gradient(ellipse at 10% 95%, rgba(113,49,146,.28), transparent 50%), #150b1d;
+    color:#f4eef8;padding:64px 0 48px;position:relative;overflow:hidden;
+  }
+  .cover::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(255,255,255,.055) 1px, transparent 1px);background-size:22px 22px;}
+  .cover .wrap{position:relative;z-index:2;}
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:#d9a8f2;
+    font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.05em;margin-bottom:28px;
+    border:1px solid rgba(217,168,242,.35);border-radius:100px;padding:8px 16px;
+  }
+  .kicker{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:#c9a6dd;margin-bottom:20px;}
+  h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(34px,7vw,54px);line-height:1.08;letter-spacing:-.01em;margin-bottom:18px;}
+  h1 em{font-style:italic;color:#d9a8f2;}
+  .cover-sub{font-size:clamp(16px,2.4vw,18.5px);color:#cbbcd6;max-width:36em;}
+
+  section{padding:50px 0 6px;}
+  .secno{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--plum);font-weight:500;margin-bottom:14px;display:flex;align-items:center;gap:12px;}
+  .secno::after{content:"";flex:1;height:1px;background:var(--line);}
+  h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,4.2vw,32px);line-height:1.16;letter-spacing:-.008em;margin-bottom:16px;}
+  h2 em{font-style:italic;color:var(--plum);}
+  p{margin-bottom:15px;max-width:46em;font-size:15.5px;}
+  p b{font-weight:600;}
+  .lede{font-size:17px;}
+
+  /* methodology grid */
+  .meth-grid{display:grid;gap:14px;margin:22px 0 8px;}
+  .meth-card{background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:18px 20px;box-shadow:0 2px 12px rgba(28,18,36,.04);}
+  .meth-card .mtag{font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--plum);margin-bottom:8px;font-weight:500;}
+  .meth-card p{font-size:14px;margin:0;color:var(--muted);max-width:none;}
+  .meth-card p b{color:var(--ink);}
+
+  /* autopsy card */
+  .autopsy{
+    background:var(--paper);border:2px solid var(--ink);border-radius:14px;margin:26px 0;overflow:hidden;
+    box-shadow:5px 6px 0 rgba(113,49,146,.9);
+  }
+  .autopsy-head{background:var(--ink);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;}
+  .autopsy-head span:last-child{color:#ff9f80;}
+  .autopsy-body{padding:22px 22px 8px;}
+  .verdict-line{
+    font-family:'Playfair Display',serif;font-style:italic;font-weight:700;font-size:clamp(18px,3vw,22px);
+    color:var(--plum);margin-bottom:6px;
+  }
+  .conf-tag{font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);margin-bottom:18px;}
+  .ev-table{width:100%;border-collapse:collapse;margin:16px 0 8px;font-size:13.5px;}
+  .ev-table th{text-align:left;font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1.5px solid var(--line);}
+  .ev-table td{padding:11px 10px;border-bottom:1px solid #efeaf3;vertical-align:top;color:var(--ink);}
+  .ev-table td:first-child{font-weight:500;}
+  .ev-table .strike{color:#a3495a;text-decoration:line-through;text-decoration-color:#d99;}
+  .ev-table .stands{color:var(--sage-deep);font-weight:500;}
+  .autopsy-close{background:#faf3e6;border-top:1.5px dashed var(--amber);padding:16px 22px;font-size:14px;color:var(--amber-deep);}
+  .autopsy-close b{color:var(--ink);}
+
+  /* watchlist */
+  .watch-grid{display:grid;gap:12px;margin:20px 0 8px;}
+  .watch-row{
+    background:var(--paper);border:1.5px solid var(--line);border-radius:10px;padding:15px 18px;
+    display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+  }
+  .watch-row .wname{font-weight:600;font-size:14.5px;min-width:150px;}
+  .watch-row .wreason{font-size:13.5px;color:var(--muted);flex:1;}
+  .wtag{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding:3px 9px;border-radius:100px;flex:none;font-weight:500;}
+  .wtag.claimed{background:#f0edf2;color:#7a7284;}
+  .wtag.watch{background:#fdf3e0;color:var(--amber-deep);}
+  .wtag.thin{background:#eaf4f5;color:var(--teal-deep);}
+
+  /* source ledger */
+  .ledger{margin:18px 0 8px;}
+  .ledger-cat{font-family:'DM Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--plum);margin:22px 0 10px;font-weight:500;}
+  .ledger-item{
+    padding:10px 0;border-bottom:1px solid #efeaf3;font-size:14px;display:flex;gap:10px;
+  }
+  .ledger-item .lnum{font-family:'DM Mono',monospace;color:var(--muted);font-size:12px;flex:none;padding-top:2px;}
+  .ledger-item a{color:var(--plum);text-decoration:none;border-bottom:1px solid rgba(113,49,146,.3);}
+  .ledger-item .ldesc{color:var(--muted);font-size:13px;}
+  .ledger-item.nolink{color:var(--muted);font-style:italic;font-size:13.5px;}
+
+  footer{
+    background:#150b1d;color:#cbbcd6;margin-top:56px;padding:44px 0 44px;position:relative;overflow:hidden;
+  }
+  footer::after{content:"";position:absolute;inset:0;opacity:.4;pointer-events:none;
+    background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);background-size:22px 22px;}
+  footer .wrap{position:relative;z-index:2;}
+  .back-btn{
+    display:block;background:var(--plum);color:#fff;text-decoration:none;text-align:center;
+    padding:18px 24px;border-radius:14px;margin-bottom:20px;box-shadow:0 8px 26px rgba(113,49,146,.5);
+    font-family:'Playfair Display',serif;font-weight:700;font-size:17px;
+  }
+  .contacts{display:flex;flex-wrap:wrap;gap:12px;}
+  .contact-chip{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border:1px solid rgba(255,255,255,.22);color:#f4eef8;border-radius:100px;padding:10px 18px;font-family:'DM Mono',monospace;font-size:12.5px;}
+  .contact-chip i{width:8px;height:8px;border-radius:50%;background:var(--sage);flex:none;}
+
+  @media (max-width:560px){
+    .watch-row{flex-direction:column;}
+    .ev-table{font-size:12.5px;}
+    .ev-table th:nth-child(3),.ev-table td:nth-child(3){display:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <div class="wrap">
+    <a class="back-link" href="index.html">← back to the brief</a>
+    <div class="kicker">The Repository · Plum Goodness / Pureplay · August 2026</div>
+    <h1>Everything I didn't<br>put in <em>front of you.</em></h1>
+    <p class="cover-sub">The two-pager makes a case. This is the evidence locker behind it, including the hypothesis I killed with my own hands before it could embarrass either of us.</p>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="secno">01 · Methodology</div>
+    <h2>How this got built, <em>honestly.</em></h2>
+    <p class="lede">Four layers, in order. Nothing here is a single ChatGPT prompt dressed up as diligence.</p>
+    <div class="meth-grid">
+      <div class="meth-card">
+        <div class="mtag">Layer 1 · The dossier</div>
+        <p>A 1,145-line OSINT pack on Pureplay Skin Sciences: MCA-derived corporate records, the full Delhi HC docket, funding chronology, trademark history, and six of Shankar's long-form interviews transcribed and cross-checked across <b>85 individually graded sources</b> (statutory record vs. company claim vs. founder statement vs. press vs. anecdote, kept separate throughout).</p>
+      </div>
+      <div class="meth-card">
+        <div class="mtag">Layer 2 · Adversarial deep research, run one</div>
+        <p>A structured prompt built specifically to try to <b>refute</b> a hypothesis I had, not confirm it: "commodity actives are easier to counterfeit, and that's why Plum got hit." Full verdict below. It didn't survive.</p>
+      </div>
+      <div class="meth-card">
+        <div class="mtag">Layer 3 · Adversarial deep research, run two</div>
+        <p>A second run scanning Korean, Japanese and Chinese beauty markets for ingredient and format whitespace, filtered against real Indian demand signal (Reddit, marketplace reviews, pricing) rather than global trend-deck noise. Six candidates went in. Two survived contact with Plum's actual catalog.</p>
+      </div>
+      <div class="meth-card">
+        <div class="mtag">Layer 4 · Manual spot-checks</div>
+        <p>Before anything from the deep-research runs went into the two-pager, I independently re-verified the load-bearing claims: Anua's live Nykaa listing, the Olive Young 2025 awards badge, SEEN Group's existence as a real London beauty PR firm, KorinMi's funding and founder, and Plum's own current toner/pad catalog for overlap.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="secno">02 · The autopsy</div>
+    <h2>The hypothesis I killed <em>before you could.</em></h2>
+    <p>The original instinct: Plum's hero actives (vitamin C, niacinamide) are commodity ingredients, which makes them structurally easier to counterfeit, and a novel active would be a real anti-counterfeiting strategy. I didn't like how convenient that sounded, so I ran it adversarially before it went anywhere near a brief with your name on it.</p>
+
+    <div class="autopsy">
+      <div class="autopsy-head"><span>Hypothesis status</span><span>DEAD</span></div>
+      <div class="autopsy-body">
+        <div class="verdict-line">Partially true, but overstated. For your specific litigation, the wrong explanation.</div>
+        <div class="conf-tag">Confidence: high, ≈85%. Full reasoning ran across OECD/EUIPO customs-seizure research, Korean and Indian enforcement actions, a Which? marketplace investigation, and a direct re-read of the CS(COMM) 1139/2025 order.</div>
+        <table class="ev-table">
+          <tr><th>Claim tested</th><th>Verdict</th><th>Why</th></tr>
+          <tr><td>Plum's hero SKUs use widely available actives</td><td class="stands">Stands</td><td>Factually correct, not in dispute</td></tr>
+          <tr><td>Commodity actives → easier functional imitation</td><td class="stands">Stands, narrowly</td><td>True at the margin for high-fidelity fakes, not the dominant driver</td></tr>
+          <tr><td>Commodity actives → more counterfeiting overall</td><td class="strike">Doesn't hold</td><td>No comparative dataset supports it; confounded by popularity, price, channel</td></tr>
+          <tr><td>Your actual court case is formula counterfeiting</td><td class="strike">Doesn't hold</td><td>Plum side is expired-stock date tampering (¶25.7); Phy side unresolved on mechanism</td></tr>
+          <tr><td>Proprietary formulas (SK-II, La Mer) resist counterfeiting</td><td class="strike">Contradicted</td><td>Both faked at industrial scale; contents didn't match, packaging fooled distributors anyway</td></tr>
+          <tr><td>A novel active would meaningfully reduce your exposure</td><td class="strike">Not supported</td><td>Real defenses are reverse-logistics reconciliation, serial tracking, tamper-evident coding</td></tr>
+        </table>
+        <div class="autopsy-close"><b>What this means for the brief:</b> the litigation doesn't appear in it. Not because it's not real, but because forcing a causal link that doesn't survive scrutiny is a worse look than leaving it out. Good thing we checked first.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="secno">03 · The full whitespace scan</div>
+    <h2>Six candidates in. <em>Two survived.</em></h2>
+    <p>The two-pager only shows you the winner. Here's everything else that got tested and why it got cut, so you know this wasn't a coin flip.</p>
+    <div class="watch-grid">
+      <div class="watch-row"><span class="wname">PDRN / polynucleotides</span><span class="wtag claimed">claimed</span><span class="wreason">Dr. Sheth's already live on Nykaa. Window closed within months of Seoul going mainstream on it.</span></div>
+      <div class="watch-row"><span class="wname">Exosome serums</span><span class="wtag claimed">claimed</span><span class="wreason">Dr. Sheth's and ClayCo both in-market. Claims substantiation is also genuinely harder to communicate cleanly than heartleaf.</span></div>
+      <div class="watch-row"><span class="wname">Spicule / microneedle serums</span><span class="wtag claimed">claimed</span><span class="wreason">The Derma Co and ClayCo already own the domestic "microneedle serum" positioning. Long-term safety data is also thinner than for topical formats.</span></div>
+      <div class="watch-row"><span class="wname">Overnight wrapping masks</span><span class="wtag claimed">claimed</span><span class="wreason">Biodance proved the demand (thousands of Nykaa ratings); Dr. Sheth's copied it domestically in June 2026. Window's gone.</span></div>
+      <div class="watch-row"><span class="wname">Chinese recombinant collagen</span><span class="wtag watch">watch, not launch</span><span class="wreason">Massive scale in China (Giant Biogene / Comfy), but no meaningful Indian imported-demand pull yet, and an active labeling-claims dispute in its home market. Too early here.</span></div>
+      <div class="watch-row"><span class="wname">Fermented bean / soybean essence</span><span class="wtag thin">demand too thin</span><span class="wreason">Mixsoon is on Nykaa, but ratings are still in the tens, and there's no Olive Young top-2 category placement behind it like heartleaf has. Real, just not proven enough yet.</span></div>
+    </div>
+    <p style="margin-top:20px;">One more that didn't make the two-pager for a different reason, not because it's weak, because it's <i>already crowded:</i> a Bioré-style watery Japanese UV essence. Real Indian appetite for the texture is well documented on Reddit and in Nykaa reviews, but Plum, Minimalist, Dot &amp; Key and Foxtale are already fighting over "lightweight, no white cast" sunscreen positioning. It's a genuinely good R&D brief. It's just not a new word in the way heartleaf is.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="secno">04 · Source ledger</div>
+    <h2>Where the numbers <em>actually</em> came from.</h2>
+
+    <div class="ledger">
+      <div class="ledger-cat">Litigation &amp; corporate record</div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://indiankanoon.org/doc/129616379/" target="_blank" rel="noopener">Delhi HC order, CS(COMM) 1139/2025, 17 Oct 2025</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://entrackr.com/fintrackr/d2c-beauty-brand-plum-turns-around-in-fy25-with-rs-25-cr-pat-10512557" target="_blank" rel="noopener">Entrackr Fintrackr · Plum FY25 financials, filing-derived</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://economictimes.indiatimes.com/tech/startups/beauty-brand-plums-fy23-revenue-rises-71-losses-widen-66/articleshow/106185531.cms" target="_blank" rel="noopener">Economic Times · Plum FY23 revenue and loss</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://www.livemint.com/companies/plum-rothschild-d2c-beauty-personal-care-fundraise-fmcg-skincare-body-care-makeup-haircare/amp-11783677788765.html" target="_blank" rel="noopener">Mint, 11 Jul 2026 · Rothschild fundraise mandate reported</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://retail.economictimes.indiatimes.com/amp/news/health-and-beauty/cosmetics-and-fragrances/quick-commerce-contributes-over-15-of-plums-biz-as-beauty-brand-expands-fulfillment-network/131732295" target="_blank" rel="noopener">ET Retail, 15 Jun 2026 · Shankar on quick commerce &amp; fulfillment</a></div>
+
+      <div class="ledger-cat">Whitespace &amp; ARR figures</div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://www.kedglobal.com/venture-capital/newsView/ked202508270007" target="_blank" rel="noopener">KED Global · The Founders (Anua) and Beauty Selection (Biodance) 2024 financials</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://www.business-standard.com/companies/news/honasa-consumer-expects-rs-1-000-cr-arr-from-the-derma-co-in-next-3-5-years-124081100137_1.html" target="_blank" rel="noopener">Business Standard · Honasa's ₹1,000 Cr ARR target for The Derma Co</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://en.sedaily.com/news/2026/07/08/korea-investment-pe-macquarie-compete-to-acquire-k-beauty" target="_blank" rel="noopener">Korea Investment PE / Macquarie contest for Hwasung Cosmetics (checked, not used, wrong shape)</a></div>
+
+      <div class="ledger-cat">KorinMi</div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://indianstartupnews.com/funding/korinmi-which-claims-to-be-indias-first-korean-skin-clinic-raises-rs-3-crore-in-funding-9044200" target="_blank" rel="noopener">Indian Startup News · KorinMi raises ₹3 Cr</a></div>
+      <div class="ledger-item"><span class="lnum">→</span><a href="https://www.indianstartuptimes.com/interviews/bringing-korean-skincare-to-india-in-conversation-with-reshbha-munjal-founder-of-korinmi/" target="_blank" rel="noopener">Indian Startup Times · Reshbha Munjal, founder interview</a></div>
+
+      <div class="ledger-cat">Consumer &amp; marketplace signal</div>
+      <div class="ledger-item nolink">Anua Heartleaf 77% Soothing Toner · live Nykaa listing, exclusive India launch, ratings and reviews (verified directly, not archived here)</div>
+      <div class="ledger-item nolink">r/IndianSkincareAddicts · heartleaf "holy grail" thread, Numbuzin toner-pad repurchase-ceiling thread, Bioré UV Aqua Rich texture threads (full transcripts in the deep-research run, not individually archived)</div>
+      <div class="ledger-item nolink">Olive Young 2025 Awards · category placements for Anua, Mediheal, Skinfood, Abib, referenced via Korean retail press coverage</div>
+    </div>
+    <p style="margin-top:22px;font-size:13.5px;color:var(--muted);">₩-to-₹ conversions in the main brief use an approximate ₹0.062/₩ rate at time of research. Recheck before quoting externally. Exchange rates move.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a class="back-btn" href="index.html">← Back to the brief</a>
+    <div class="contacts">
+      <a class="contact-chip" href="https://www.linkedin.com/in/santosh-iyer-spjimr/" target="_blank" rel="noopener"><i></i>LinkedIn / santosh-iyer-spjimr</a>
+      <a class="contact-chip" href="mailto:pgp23.santosh@spjimr.org"><i></i>pgp23.santosh@spjimr.org</a>
+      <a class="contact-chip" href="tel:+919558357375"><i></i>+91 95583 57375</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
